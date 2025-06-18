@@ -157,10 +157,103 @@ Contents include:
 
 ---
 
-## 📁 Project Directory Structure
+# 🔍 Task 2: Predictive Modeling  
 
-Task-1-EDA-Geldium/
-├── Delinquency_prediction_dataset.xlsx # Raw dataset from Geldium
-├── Updated_Dataset_Description_Guide.pdf # Field explanation
-├── EDA_Summary_Report_Geldium_Final.docx # Final report (output)
-├── README.md # Documentation
+In this **Task 2** of my virtual internship project with **Tata iQ**, where I moved beyond data exploration (Task 1) and outlined a predictive modeling approach to forecast **credit card delinquency risk** among customers of Geldium.
+
+Building on the insights gathered in the Exploratory Data Analysis phase, I used **GenAI tools** to define model logic, select an appropriate algorithm, justify the approach, and create a fair and interpretable evaluation plan.
+
+---
+
+## 🧠 Objective
+
+To design a conceptual AI model that:
+- Predicts whether a customer is likely to become delinquent (miss payments)
+- Assists the Collections team in identifying high-risk customers
+- Maintains fairness, transparency, and regulatory alignment
+- Leverages insights from customer financial and behavioral attributes
+
+---
+
+## 🔧 1. Model Logic (Generated with GenAI)
+
+The predictive model uses key financial indicators to classify customers as either **at risk of delinquency (1)** or **not delinquent (0)**. The GenAI-generated model workflow includes:
+
+### 🔄 Modeling Steps:
+1. **Load Dataset**: Use Geldium’s cleaned dataset
+2. **Feature Selection**: Focus on influential attributes like:
+   - Credit_Utilization
+   - Debt_to_Income_Ratio
+   - Missed_Payments
+   - Credit_Score
+   - Account_Tenure
+3. **Data Preprocessing**: 
+   - Handle missing values (e.g., impute Income)
+   - Encode categorical variables (Employment_Status, Credit_Card_Type)
+4. **Model Training**:
+   - Apply Logistic Regression for binary classification
+   - Calculate delinquency probability for each customer
+5. **Classification Threshold**:
+   - If probability > 0.5 → classify as delinquent
+6. **Output**: 
+   - Provide label (0 or 1) + explanation using SHAP or similar techniques
+7. **Model Evaluation**:
+   - Accuracy, Precision, Recall, F1 Score, AUC-ROC
+
+This logic was generated with the help of ChatGPT to accelerate model planning and summarization.
+
+---
+
+## 📌 2. Justification for Model Choice
+
+I selected **Logistic Regression** for the following reasons:
+
+- 🧾 **Interpretability**: Ideal for explaining how each feature influences the prediction
+- 🎯 **Binary Outcome Alignment**: Perfect match for the target variable (`Delinquent_Account`)
+- 🛡️ **Regulatory Compliance**: Trusted by financial institutions due to transparency
+- ⚡ **Efficient Deployment**: Lightweight, easy to implement and maintain
+- 🤝 **Business Alignment**: Supports Geldium’s need for traceable, fair, and ethical AI
+
+Though alternatives like Random Forest or Neural Networks offer higher complexity and potential accuracy, their lack of transparency would not align well with Geldium’s operational and compliance requirements.
+
+---
+
+## 📈 3. Evaluation Strategy
+
+To ensure both **accuracy** and **fairness**, I developed a multi-dimensional evaluation strategy:
+
+### 📊 Key Metrics:
+- **Accuracy**: Overall correctness of predictions
+- **Precision**: Percentage of true delinquents among those predicted at-risk
+- **Recall**: Percentage of all actual delinquents the model correctly identified
+- **F1 Score**: Harmonic mean of precision and recall—ideal for imbalanced data
+- **AUC-ROC**: Measures the model’s ability to distinguish between classes
+- **Confusion Matrix**: Visual breakdown of prediction performance
+
+### ⚖️ Fairness & Bias Mitigation:
+- Use **disparate impact analysis** to detect bias across income, employment, and location groups
+- Apply **SHAP values** to understand which features influence individual predictions
+- Test for **demographic parity** and **equal opportunity** across customer segments
+- Avoid proxy variables (e.g., ZIP code) that may unintentionally embed bias
+
+### 🧭 Ethical Considerations:
+- Maintain **human-in-the-loop** review before action on high-risk predictions
+- Keep all explanations traceable and auditable
+- Respect data privacy and transparency in all model outputs
+
+---
+
+## 🧠 Learnings from Task 2
+
+- Used **GenAI** tools effectively to generate model logic and justification
+- Learned to balance **performance, explainability, and fairness** in model design
+- Developed a complete conceptual pipeline suitable for **real-world deployment**
+- Designed a responsible evaluation framework aligned with industry standards
+
+---
+
+This modeling plan sets the foundation for building a responsible and effective AI-powered credit risk solution. The next step would involve implementation, validation, and real-time deployment support.
+
+---
+
+
